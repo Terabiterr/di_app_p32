@@ -34,17 +34,26 @@ namespace di_app.Services
 
         public User GetUserById(int id)
         {
-            throw new NotImplementedException();
+            return Users.Find(u => u.Id == id); ;
         }
 
         public IEnumerable<User> GetUsers()
         {
-            throw new NotImplementedException();
+            return Users;
         }
 
         public User UpdateUserById(int id, User user)
         {
-            throw new NotImplementedException();
+            var user_update = Users.Find
+                (u => u.Id == id);
+            if (user == null)
+            {
+                return null;
+            }
+            user_update.Id = user.Id;
+            user_update.Name = user.Name;
+            user_update.Email = user.Email;
+            return user;
         }
     }
 }
